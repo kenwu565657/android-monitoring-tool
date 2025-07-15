@@ -20,6 +20,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 ktsh = { module = "com.jaredrummler:ktsh", version = "1.0.0" }
+netty = { module = "io.netty:netty-all", version = "4.1.106.Final" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
