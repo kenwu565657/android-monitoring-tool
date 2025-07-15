@@ -53,6 +53,7 @@
         <service android:name=".service.WebsocketClientService"
             android:exported="true"
             android:enabled="true"
+            android:foregroundServiceType="remoteMessaging"
             android:permission="TODO">
         </service>
 
