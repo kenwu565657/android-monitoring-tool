@@ -3,6 +3,7 @@ package com.monitoring.app.utils
 import com.monitoring.app.MyApplication
 
 object ToastUtils {
+
     fun showShort(message: String) {
         android.widget.Toast.makeText(
             MyApplication.context,
