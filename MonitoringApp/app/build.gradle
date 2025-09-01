@@ -5,18 +5,26 @@ plugins {
 
 android {
     namespace 'com.monitoring.app'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.monitoring.app"
         minSdk 28
-        targetSdk 35
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    viewBinding {
+        enabled = true
+    }
+    buildFeatures {
+        buildConfig = true
+    }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
     signingConfigs {
         create("release") {
             storeFile = file("../key.jks")
@@ -28,21 +36,24 @@ android {
 
     buildTypes {
         debug {
-            signingConfig = signingConfigs.getByName("release")
+            android.buildFeatures.buildConfig true
+            buildConfigField("String", "WEB_SOCKET_URL", "\"ws://10.0.2.2:8081/ws\"")
         }
 
         release {
+            android.buildFeatures.buildConfig true
             signingConfig = signingConfigs.getByName("release")
             minifyEnabled false
+            buildConfigField("String", "WEB_SOCKET_URL", "\"ws://10.0.2.2:8080\"")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '17'
     }
 }
 
@@ -55,6 +66,14 @@ dependencies {
     implementation libs.androidx.constraintlayout
     implementation libs.ktsh
     implementation libs.netty
+    implementation libs.androidx.lifecycle.extensions
+    implementation libs.play.services.location
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.java.websocket
+    implementation libs.greenrobot.eventbus
+    implementation libs.webrtc
+    implementation libs.gson
+    implementation libs.pedroSG94
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
