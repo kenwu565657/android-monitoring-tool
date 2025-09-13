@@ -11,8 +11,16 @@ import com.monitoring.app.R
 
 class GridViewAdapter(private val context: Context) : BaseAdapter() {
 
-    private val imageIdList = listOf(R.drawable.twotone_monitor_24, R.drawable.delete_24dp_000000_fill0_wght400_grad0_opsz24, R.drawable.baseline_arrow_circle_up_24, R.drawable.baseline_android_24)
-    private val stringIdList = listOf("Start Monitoring", "Uninstall App", "Version Update", "About App")
+    private val imageIdList = listOf(
+        R.drawable.twotone_monitor_24, R.drawable.delete_24dp_000000_fill0_wght400_grad0_opsz24,
+        R.drawable.baseline_arrow_circle_up_24, R.drawable.baseline_android_24,
+        R.drawable.baseline_add_a_photo_24, R.drawable.terminal_24dp_000000_fill0_wght400_grad0_opsz24
+    )
+    private val stringIdList = listOf(
+        "Start Monitoring", "Uninstall App",
+        "Version Update", "About App",
+        "Test Camera", "Shell Command"
+    )
 
     override fun getCount() = imageIdList.size
 
