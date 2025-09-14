@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Monitoring App"
 include ':app'
+include ':selfLibrary'
