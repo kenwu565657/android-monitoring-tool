@@ -1,6 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FF000000">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FF1E1E1E"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvShellTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Shell Terminal"
+            android:textColor="#FF00FF00"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvConnectionStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Connected"
+            android:textColor="#FF00FF00"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/scrollViewShortcuts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF2E2E2E"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/inputContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnLs"
+                style="@style/ShellShortcutButton"
+                android:text="ls" />
+
+            <Button
+                android:id="@+id/btnPwd"
+                style="@style/ShellShortcutButton"
+                android:text="pwd" />
+
+            <Button
+                android:id="@+id/btnPs"
+                style="@style/ShellShortcutButton"
+                android:text="ps" />
+
+            <Button
+                android:id="@+id/btnTop"
+                style="@style/ShellShortcutButton"
+                android:text="top" />
+
+            <Button
+                android:id="@+id/btnDf"
+                style="@style/ShellShortcutButton"
+                android:text="df -h" />
+
+            <Button
+                android:id="@+id/btnNetstat"
+                style="@style/ShellShortcutButton"
+                android:text="netstat" />
+
+            <Button
+                android:id="@+id/btnLogcat"
+                style="@style/ShellShortcutButton"
+                android:text="logcat" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/inputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF1E1E1E"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="monospace"
+            android:paddingEnd="4dp"
+            android:text="$ "
+            android:textColor="#FF00FF00"
+            android:textSize="14sp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/etShellInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:fontFamily="monospace"
+            android:hint="Please enter command..."
+            android:imeOptions="actionSend"
+            android:inputType="textNoSuggestions"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:textColor="#FF00FF00"
+            android:textColorHint="#FF808080"
+            android:textSize="14sp"
+            tools:ignore="Autofill" />
+
+        <ImageButton
+            android:id="@+id/btnSend"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="send command"
+            android:src="@drawable/ic_send"
+            app:tint="#FF00FF00" />
+
+        <ImageButton
+            android:id="@+id/btnClear"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="clear"
+            android:src="@drawable/ic_clear"
+            app:tint="#FF00FF00" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollViewOutput"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#FF000000"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/scrollViewShortcuts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar">
+
+        <TextView
+            android:id="@+id/tvShellOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:padding="16dp"
+            android:text="Android Shell v1.0\nType 'help' for available commands\n$ "
+            android:textColor="#FF00FF00"
+            android:textSize="14sp"
+            tools:text="$ ls -la\ntotal 12\ndrwxr-xr-x 3 shell shell 4096 Jan 01 12:00 .\ndrwxr-xr-x 3 shell shell 4096 Jan 01 12:00 ..\n$ " />
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
