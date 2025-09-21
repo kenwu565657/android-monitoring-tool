@@ -3,12 +3,18 @@ package com.monitoring.app.manager
 import android.content.Context
 import android.content.Intent
 import com.monitoring.app.activity.CameraActivity
+import com.monitoring.app.activity.ShellActivity
 
 object ActivityManager {
     private val activityStack = mutableListOf<android.app.Activity>()
 
     fun switchToCameraActivity(context: Context) {
         val intent = Intent(context, CameraActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    fun switchToShellActivity(context: Context) {
+        val intent = Intent(context, ShellActivity::class.java)
         context.startActivity(intent)
     }
 

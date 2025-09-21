@@ -19,6 +19,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        LogUtils.d(getTag(), "Lifecycle: onDestroy called")
         super.onDestroy()
         ActivityManager.removeActivity(this)
     }

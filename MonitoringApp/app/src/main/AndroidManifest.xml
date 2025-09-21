@@ -50,6 +50,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.CameraActivity" />
+        <activity android:name=".activity.ShellActivity" />
 
         <receiver
             android:name=".system.admin.MyDeviceAdminReceiver"
