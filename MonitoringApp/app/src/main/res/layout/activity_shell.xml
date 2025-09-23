@@ -101,9 +101,7 @@
         android:background="#FF1E1E1E"
         android:orientation="horizontal"
         android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:id="@+id/tvPrompt"
@@ -111,11 +109,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:fontFamily="monospace"
-            android:paddingEnd="4dp"
             android:text="$ "
             android:textColor="#FF00FF00"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvCursor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="monospace"
+            android:text="█"
+            android:textColor="#FF00FF00"
             android:textSize="14sp"
-            tools:ignore="RtlSymmetry" />
+            android:layout_marginEnd="4dp" />
 
         <EditText
             android:id="@+id/etShellInput"
@@ -167,16 +174,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleBar">
 
-        <TextView
-            android:id="@+id/tvShellOutput"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:padding="16dp"
-            android:text="Android Shell v1.0\nType 'help' for available commands\n$ "
-            android:textColor="#FF00FF00"
-            android:textSize="14sp"
-            tools:text="$ ls -la\ntotal 12\ndrwxr-xr-x 3 shell shell 4096 Jan 01 12:00 .\ndrwxr-xr-x 3 shell shell 4096 Jan 01 12:00 ..\n$ " />
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvShellOutput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="Android Shell v1.0\nType 'help' for available commands\n$ "
+                android:textColor="#FF00FF00"
+                android:textSize="14sp"
+                tools:text="$ ls -la\ntotal 12\ndrwxr-xr-x 3 shell shell 4096 Jan 01 12:00 .\ndrwxr-xr-x 3 shell shell 4096 Jan 01 12:00 ..\n$ " />
+
+            <TextView
+                android:id="@+id/tvOutputCursor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="█"
+                android:textColor="#FF00FF00"
+                android:textSize="14sp" />
+
+        </LinearLayout>
 
     </ScrollView>
 
