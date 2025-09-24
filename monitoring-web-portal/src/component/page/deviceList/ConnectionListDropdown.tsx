@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
-interface ConnectionListDropdownProps {
-    connectionList: string[];
-}
-
-const ConnectionListDropdown: React.FC<ConnectionListDropdownProps> = ({connectionList}) => {
+const ConnectionListDropdown: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [connectionList, setConnectionList] = useState<string[]>([]);
     const [selectedConnection, setSelectedConnection] = useState<string>('');
+
+    useEffect(() => {
+        fetch('http://localhost:8080/websocket/connections')
+            .then(res => res.json())
+            .then(data => setConnectionList(data))
+            .catch(() => setConnectionList([]))
+    }, [])
 
     const handleSelect = (connection: string) => {
         setSelectedConnection(connection);
