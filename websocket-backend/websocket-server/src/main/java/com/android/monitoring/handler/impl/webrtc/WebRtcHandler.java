@@ -10,7 +10,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,16 +77,6 @@ public class WebRtcHandler implements WebSocketMessageHandler {
             e.printStackTrace();
             return null;
         }
-
-        /*
-        if (StringUtils.isBlank(targetConnectionId) ||
-                StringUtils.isNotBlank(sourceConnectionId) ||
-                "mobile".equals(incomingMessageFromClient.getSourceConnectionId())
-        ) {
-            targetConnectionId = WebsocketConnectionMap.getClientAdminIdMap().get(sourceConnectionId);
-        }
-
-         */
 
         if ((incomingMessageFromClient.getHeader() == WebSocketMessageHeader.WEBRTC_ANSWER
         || incomingMessageFromClient.getHeader() == WebSocketMessageHeader.WEBRTC_ICE_CANDIDATE)
