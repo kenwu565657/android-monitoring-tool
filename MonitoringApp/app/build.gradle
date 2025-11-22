@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.monitoring.app"
-        minSdk 28
+        minSdk 25
         targetSdk 36
         versionCode 1
         versionName "1.0"
@@ -37,7 +37,7 @@ android {
     buildTypes {
         debug {
             android.buildFeatures.buildConfig true
-            buildConfigField("String", "WEB_SOCKET_URL", "\"ws://10.0.2.2:8081/ws\"")
+            buildConfigField("String", "WEB_SOCKET_URL", "\"ws://localhost:8081/ws\"")
         }
 
         release {
